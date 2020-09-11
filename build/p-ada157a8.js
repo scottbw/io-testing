@@ -1,0 +1,1 @@
+function t(t,r){let a;try{a=parseFloat(t)}catch(r){return t}return isNaN(a)?t:a.toFixed(r)}export{t as n}
