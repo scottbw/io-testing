@@ -116,14 +116,18 @@
                         colours="#AF3845,#F9F081,#334064">
                     </oi-radial-barchart>
                 -->
-                <div style="width:50%">
+            <div style="display:flex; width:100%; flex-flow: wrap">
+                <div style="width:100%">
                     <h4>Readiness</h4>
                     <oi-radial-barchart data-src="data/air.json"></oi-radial-barchart>
-                </div><br>
-                <div style="width:50%">
-                    <h4>Responsible Use</h4>
-                    <oi-radial-barchart  data-src="data/air.json" keys="Inclusivity,Accountability,Transparency,Privacy" colours="#E94A5A,#F7E82D,#4D6095,green"></oi-radial-barchart>
                 </div>
+                <br>
+                <div style="width:100%">
+                    <h4>Responsible Use</h4>
+                    <oi-radial-barchart data-src="data/air.json" keys="Inclusivity,Accountability,Transparency,Privacy"
+                                        colours="#E94A5A,#F7E82D,#4D6095,green"></oi-radial-barchart>
+                </div>
+            </div>
             </oi-country-fiche>
     </section>
 
