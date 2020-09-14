@@ -44,16 +44,25 @@
         /**
             An example layout - single centered column, similar to 2019 report page
          */
+        @media all and (min-width: 700px){
         main {
-            display: flex;
-            flex-flow: column;
+            width:50%;
             margin: auto;
-            justify-content: stretch;
+        }
+        }
+
+        @media all and (max-width: 700px) {
+            main {
+                display: flex;
+                flex-flow: column;
+                margin: auto;
+                justify-content: stretch;
+            }
         }
 
         section {
             margin-bottom: 20px;
-            width:100%;
+            width: 100%;
             flex-grow: 1;
         }
 
