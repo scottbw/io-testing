@@ -35,6 +35,12 @@
             text-align:center;
         }
 
+        .attribution {
+            text-align: center;
+            font-size: small;
+            color: darkgrey;
+        }
+
         /**
             An example layout - single centered column, similar to 2019 report page
          */
@@ -130,7 +136,7 @@
     <!-- the table view for the country list can show any of the columns if you want.-->
     <section>
         <div style="height:240px; overflow:scroll; width:100%">
-            <oi-country-list data-src="data/air.json" sort-by="Rank" sort="desc" columns="Rank,Country,Index,Government,Technology Sector,Data and Infrastructure"></oi-country-list>
+            <oi-country-list data-src="data/air.json" sort-by="Rank" sort="asc" columns="Rank,Country,Index,Government,Technology Sector,Data and Infrastructure"></oi-country-list>
         </div>
     </section>
 
@@ -165,6 +171,8 @@
         </article>
     </section>
 </main>
+
+<p class="attribution">JavaScript web components developed by <a href="https://twitter.com/scottbw">Scott Wilson</a> using <a href="https://stenciljs.com/">Stenciljs</a>, D3js and Leafletjs. Flags from <a href="https://flagpedia.net">Flagpedia</a>. Map shape data from <a href="https://geojson-maps.ash.ms/">GeoJSON Maps</a>.</p>
 
 </body>
 </html>
