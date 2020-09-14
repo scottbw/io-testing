@@ -6,8 +6,8 @@
     <title>Oxford Insights Test</title>
 
     <!-- You must include links to the scripts, which need to be in a directory with their dependencies -->
-    <script type="module" src="build/oi-components.esm.js"></script>
-    <script nomodule="" src="build/oi-components.js"></script>
+    <script type="module" src="/oxford-insights/static/oi-components/www/build/oi-components.esm.js"></script>
+    <script nomodule="" src="/oxford-insights/static/oi-components/www/build/oi-components.js"></script>
 
 
     <style>
@@ -29,6 +29,10 @@
          */
         html {
             font-size: 16px;
+        }
+
+        h4 {
+            text-align:center;
         }
 
         /**
@@ -79,14 +83,14 @@
     <!-- The map needs to have a height somewhere above it in the tag hierarchy -->
     <section style="height:400px">
         <!-- these are all the properties you can set for the map -->
-        <oi-map zoom="2" low-colour="white" high-colour="#083D7E" tooltip-background-colour="black"></oi-map>
+        <oi-map data-src="data/map.json" zoom="2" low-colour="white" high-colour="#083D7E" tooltip-background-colour="black"></oi-map>
     </section>
 
     <!-- If you set a height and overflow, to make the list into a scrolling window, you also need
         to explicitly set the width to 100% -->
     <section>
         <div style="height:240px; overflow:scroll; width:100%">
-            <oi-country-list sort-by="Total" sort="desc"></oi-country-list>
+            <oi-country-list data-src="data/air.json" columns="Rank,Country,Index" sort-by="Rank" sort="asc"></oi-country-list>
         </div>
     </section>
 
@@ -94,7 +98,7 @@
     <!-- The focus-on-selection property sets whether to 'jump' to the fiche when a new country
          is selected -->
     <section>
-            <oi-country-fiche focus-on-selection=true>
+            <oi-country-fiche data-src="data/air.json" focus-on-selection=true>
 
                 <!--
                     The default for the radial is to show the things on the fiche print design.
@@ -106,10 +110,17 @@
                         colours="#AF3845,#F9F081,#334064">
                     </oi-radial-barchart>
                 -->
-
-                <oi-radial-barchart></oi-radial-barchart>
+                <div style="width:50%">
+                    <h4>Readiness</h4>
+                    <oi-radial-barchart data-src="data/air.json"></oi-radial-barchart>
+                </div><br>
+                <div style="width:50%">
+                    <h4>Responsible Use</h4>
+                    <oi-radial-barchart  data-src="data/air.json" keys="Inclusivity,Accountability,Transparency,Privacy" colours="#E94A5A,#F7E82D,#4D6095,green"></oi-radial-barchart>
+                </div>
             </oi-country-fiche>
     </section>
+
 
     <!-- A container for dynamic text -->
     <section>
@@ -119,7 +130,7 @@
     <!-- the table view for the country list can show any of the columns if you want.-->
     <section>
         <div style="height:240px; overflow:scroll; width:100%">
-            <oi-country-list sort-by="Total" sort="desc" columns="Country,Total,Government,Technology Sector,Data and Infrastructure"></oi-country-list>
+            <oi-country-list data-src="data/air.json" sort-by="Rank" sort="desc" columns="Rank,Country,Index,Government,Technology Sector,Data and Infrastructure"></oi-country-list>
         </div>
     </section>
 
