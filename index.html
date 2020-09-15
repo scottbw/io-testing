@@ -18,6 +18,7 @@
             src: url("https://fonts.googleapis.com/css?family=Karla") format("opentype");
             font-weight: 300;
         }
+
         body {
             font-family: Karla, sans-serif;
             -webkit-font-smoothing: antialiased;
@@ -32,7 +33,7 @@
         }
 
         h4 {
-            text-align:center;
+            text-align: center;
         }
 
         .attribution {
@@ -44,14 +45,15 @@
         /**
             An example layout - single centered column, similar to 2019 report page
          */
-        @media all and (min-width: 700px){
-        main {
-            width:50%;
-            margin: auto;
-        }
+
+        @media all and (min-width: 1000px) {
+            main {
+                width: 50%;
+                margin: auto;
+            }
         }
 
-        @media all and (max-width: 700px) {
+        @media all and (max-width: 1000px) {
             main {
                 display: flex;
                 flex-flow: column;
@@ -64,6 +66,16 @@
             margin-bottom: 20px;
             width: 100%;
             flex-grow: 1;
+            background: #F7F9FB;
+        }
+
+        section h4 {
+            padding: 20px;
+        }
+
+        section p {
+            padding: 10px;
+            font-size: 0.8rem;
         }
 
         /**
@@ -94,50 +106,111 @@
 
 <main>
     <!-- The map needs to have a height somewhere above it in the tag hierarchy -->
-    <section style="height:400px">
+    <section>
+        <h4>AI readiness mapped</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+            deserunt mollit anim id est laborum.</p>
         <!-- these are all the properties you can set for the map -->
-        <oi-map data-src="data/map.json" zoom="2" low-colour="white" high-colour="#083D7E" tooltip-background-colour="black"></oi-map>
+        <oi-map style="height:400px" data-src="data/map.json" zoom="2" low-colour="white" high-colour="#083D7E"
+                tooltip-background-colour="black"></oi-map>
     </section>
 
     <!-- If you set a height and overflow, to make the list into a scrolling window, you also need
         to explicitly set the width to 100% -->
     <section>
-        <div style="height:240px; overflow:scroll; width:100%">
-            <oi-country-list data-src="data/air.json" columns="Rank,Country,Index" sort-by="Rank" sort="asc"></oi-country-list>
+        <h4>All countries ranked by index</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+            deserunt mollit anim id est laborum.</p>
+        <div style="height:240px; overflow: scroll; width:100%">
+            <oi-country-list data-src="data/air.json" columns="Rank,Country,Index" sort-by="Rank"
+                             sort="asc"></oi-country-list>
         </div>
     </section>
 
     <!-- The fiche doesn't require any special styling -->
     <!-- The focus-on-selection property sets whether to 'jump' to the fiche when a new country
          is selected -->
+
+
     <section>
-            <oi-country-fiche data-src="data/air.json" focus-on-selection=true>
 
-                <!--
-                    The default for the radial is to show the things on the fiche print design.
-                    However, it also takes a list of keys and colours.
-                    Eg., if you just wanted to show the group totals:
+        <oi-country-fiche data-src="data/air.json" focus-on-selection=true>
 
-                    <oi-radial-barchart
-                        keys="Government,Technology Sector,Data and Infrastructure"
-                        colours="#AF3845,#F9F081,#334064">
-                    </oi-radial-barchart>
-                -->
-            <div style="display:flex; width:100%; flex-flow: wrap">
+            <!--
+                The default for the radial is to show the things on the fiche print design.
+                However, it also takes a list of keys and colours.
+                Eg., if you just wanted to show the group totals:
+
+                <oi-radial-barchart
+                    keys="Government,Technology Sector,Data and Infrastructure"
+                    colours="#AF3845,#F9F081,#334064">
+                </oi-radial-barchart>
+            -->
+            <div style="display:flex; width:100%; flex-flow: row wrap">
                 <div style="width:100%">
                     <h4>Readiness</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                        aliquip
+                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                        dolore eu
+                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                        deserunt mollit anim id est laborum.</p>
                     <oi-radial-barchart data-src="data/air.json"></oi-radial-barchart>
                 </div>
                 <br>
                 <div style="width:100%">
                     <h4>Responsible Use</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                        aliquip
+                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                        dolore eu
+                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                        deserunt mollit anim id est laborum.</p>
                     <oi-radial-barchart data-src="data/air.json" keys="Inclusivity,Accountability,Transparency,Privacy"
                                         colours="#E94A5A,#F7E82D,#4D6095,green"></oi-radial-barchart>
                 </div>
             </div>
-            </oi-country-fiche>
+        </oi-country-fiche>
     </section>
 
+    <section>
+        <h4>Alternative layout - AI Readiness radial and detail table</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+            deserunt mollit anim id est laborum.</p>
+        <oi-radial-barchart data-src="data/air.json"></oi-radial-barchart>
+        <div style="height:240px; overflow:scroll; width:100%">
+            <oi-country-list data-src="data/air.json" sort-by="Vision" sort="desc"
+                             columns="Country,Vision,Governance and Ethics,Digital Capacity,Adaptability,Size,Innovation Capacity,Human Capital,Infrastructure,Data Availability,Data Representativess"></oi-country-list>
+        </div>
+    </section>
+
+    <section>
+        <h4>Alternative layout - Responsible AI radial and detail table</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+            deserunt mollit anim id est laborum.</p>
+        <oi-radial-barchart data-src="data/air.json" keys="Inclusivity,Accountability,Transparency,Privacy"
+                            colours="#E94A5A,#F7E82D,#4D6095,green"></oi-radial-barchart>
+        <div style="height:240px; overflow:scroll; width:100%">
+            <oi-country-list data-src="data/air.json" sort-by="Responsible Use Score" sort="desc"
+                             columns="Country,Responsible Use Score,Inclusivity,Accountability,Transparency,Privacy" ;></oi-country-list>
+        </div>
+    </section>
 
     <!-- A container for dynamic text -->
     <section>
@@ -146,8 +219,15 @@
 
     <!-- the table view for the country list can show any of the columns if you want.-->
     <section>
+        <h4>How do countries compare on key measures?</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+            deserunt mollit anim id est laborum.</p>
         <div style="height:240px; overflow:scroll; width:100%">
-            <oi-country-list data-src="data/air.json" sort-by="Rank" sort="asc" columns="Rank,Country,Index,Government,Technology Sector,Data and Infrastructure"></oi-country-list>
+            <oi-country-list data-src="data/air.json" sort-by="Rank" sort="asc"
+                             columns="Rank,Country,Index,Government,Technology Sector,Data and Infrastructure"></oi-country-list>
         </div>
     </section>
 
@@ -178,12 +258,14 @@
                 vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum
                 qui dolorem eum fugiat quo voluptas nulla pariatur?
             </p>
-
         </article>
     </section>
 </main>
 
-<p class="attribution">JavaScript web components developed by <a href="https://twitter.com/scottbw">Scott Wilson</a> using <a href="https://stenciljs.com/">Stenciljs</a>, D3js and Leafletjs. Flags from <a href="https://flagpedia.net">Flagpedia</a>. Map shape data from <a href="https://geojson-maps.ash.ms/">GeoJSON Maps</a>.</p>
+<p class="attribution">JavaScript web components developed by <a href="https://twitter.com/scottbw">Scott Wilson</a>
+    using <a href="https://stenciljs.com/">Stenciljs</a>, D3js and Leafletjs. Flags from <a
+            href="https://flagpedia.net">Flagpedia</a>. Map shape data from <a href="https://geojson-maps.ash.ms/">GeoJSON
+        Maps</a>.</p>
 
 </body>
 </html>
