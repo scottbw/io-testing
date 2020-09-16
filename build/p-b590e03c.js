@@ -1,0 +1,1 @@
+function t(t){let r=Number(t);return isNaN(r)?t:r%1==0?r.toFixed(0):e(t,3)}function r(t){let r=Number(t);return isNaN(r)?t:r%1==0?r.toFixed(0):e(t,2)}function e(t,r){let e;try{e=parseFloat(t)}catch(r){return t}return isNaN(e)?t:e.toFixed(r)}export{t as a,r as f,e as n}
