@@ -137,18 +137,24 @@
     <!-- If you set a height and overflow, to make the list into a scrolling window, you also need
         to explicitly set the width to 100% -->
     <section>
-        <h4>All countries ranked by index</h4>
+        <h4>Table</h4>
         <div style="height:340px; overflow: scroll; width:100%">
             <oi-country-list data-src="data/air.json" columns="Rank,Country,Index" sort-by="Rank"
                              sort="asc"></oi-country-list>
         </div>
     </section>
 
+    <section>
+        <h4>Radial chart</h4>
+        <div style="width:50%">
+                    <oi-radial-barchart data-src="data/air.json"></oi-radial-barchart>
+        </div>
+    </section>
 
     <!-- The fiche doesn't require any special styling -->
     <!-- The focus-on-selection property sets whether to 'jump' to the fiche when a new country
          is selected -->
-
+    <!--
     <section>
         <oi-country-fiche data-src="data/air.json" focus-on-selection=true>
 
@@ -174,7 +180,7 @@
             </div>
         </oi-country-fiche>
     </section>
-
+    -->
 
     <!-- A container for dynamic text -->
     <!--
@@ -201,7 +207,7 @@
             -->
             <div style="display:flex; width:100%; flex-flow: row wrap">
                 <div style="width:100%">
-                    <h4>Readiness</h4>
+                    <h4>Larger table with text</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                         labore et
                         dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
