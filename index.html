@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-    <title>Oxford Insights Test</title>
+    <title>Web Components Test Page</title>
 
     <!-- You must include links to the scripts, which need to be in a directory with their dependencies -->
     <script type="module" src="build/oi-components.esm.js"></script>
@@ -102,9 +102,10 @@
     doesn't really matter whether that's in rows, columns, grids etc.
 -->
 
-<h1 class="headline">Oxford Insights Test Page</h1>
+<h1 class="headline">Web Components Test Page</h1>
 
 <!-- these are all the properties you can set for the map -->
+<!--
 <oi-map
         style="height:600px"
         data-src="data/map.json"
@@ -118,9 +119,11 @@
         tooltip-background-colour="white"
         tooltip-colour="black">
 </oi-map>
+-->
 
 <main>
     <!-- The map needs to have a height somewhere above it in the tag hierarchy -->
+    <!--
     <section>
         <h4>Introduction text</h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -129,16 +132,12 @@
             fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
             deserunt mollit anim id est laborum.</p>
     </section>
+    -->
 
     <!-- If you set a height and overflow, to make the list into a scrolling window, you also need
         to explicitly set the width to 100% -->
     <section>
         <h4>All countries ranked by index</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-            deserunt mollit anim id est laborum.</p>
         <div style="height:340px; overflow: scroll; width:100%">
             <oi-country-list data-src="data/air.json" columns="Rank,Country,Index" sort-by="Rank"
                              sort="asc"></oi-country-list>
@@ -178,10 +177,13 @@
 
 
     <!-- A container for dynamic text -->
+    <!--
     <section>
         <oi-text></oi-text>
     </section>
+    -->
 
+    <!--
     <p>This is an example of the fiche with some content as well as the data.</p>
 
     <section>
@@ -227,6 +229,7 @@
             </div>
         </oi-country-fiche>
     </section>
+    -->
 
     <p>This is an example of using the list component with more fields.</p>
     <!-- the table view for the country list can show any of the columns if you want.-->
@@ -243,7 +246,7 @@
         </div>
     </section>
 
-
+    <!--
     <!--
         You need to include the text content somewhere in the page, wrapped in a tag with display:none
          Include the country name as the ID of the top of the article; you can include any content inside
@@ -273,6 +276,7 @@
             </p>
         </article>
     </section>
+    -->
 </main>
 
 
