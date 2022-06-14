@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <title>Web Components Test Page</title>
+
+    <!-- You must include links to the scripts, which need to be in a directory with their dependencies -->
+    <script type="module" src="build/oi-components.esm.js"></script>
+    <script nomodule="" src="build/oi-components.js"></script>
+    <!-- -->
+
+    <style>
+
+        /* Any font you use in the main page will be picked up by the components */
+        @font-face {
+            font-family: 'Karla', sans-serif;
+            src: url("https://fonts.googleapis.com/css?family=Karla") format("opentype");
+            font-weight: 300;
+        }
+
+        body {
+            font-family: Karla, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /*
+           All the text in the components is sized relative to the HTML element size, so change
+           it here to make the text bigger/smaller
+         */
+        html {
+            font-size: 16px;
+        }
+
+        /**
+            An example layout - single centered column, similar to 2019 report page
+         */
+
+        @media all and (min-width: 1000px) {
+            main {
+                width: 50%;
+                margin: auto;
+            }
+        }
+
+        @media all and (max-width: 1000px) {
+            main {
+                display: flex;
+                flex-flow: column;
+                margin: auto;
+                justify-content: stretch;
+            }
+        }
+
+        section {
+            margin-bottom: 20px;
+            width: 100%;
+            flex-grow: 1;
+            background: #F7F9FB;
+        }
+
+        section h4 {
+            padding: 20px;
+            text-align: center;
+        }
+
+        section p {
+            padding: 10px;
+            font-size: 0.8rem;
+        }
+
+        /**
+            Footer attributions
+         */
+        .attribution {
+            text-align: center;
+            font-size: small;
+            color: darkgrey;
+        }
+
+        /**
+            Style from 2019 report page.
+         */
+        .headline {
+            color: #F46036;
+            font-size: 52px;
+            margin-top: 100px;
+            font-weight: 200;
+            line-height: 1em;
+            text-align: center
+        }
+
+
+    </style>
+</head>
+<body>
+
+<!-- This is an example page, following the sort of layout used in the 2019 report -->
+
+<!--
+    Generally each component tries to occupy the space you leave for it in the layout, it
+    doesn't really matter whether that's in rows, columns, grids etc.
+-->
+
+<h1 class="headline">AI Readiness Index 2021</h1>
+    
+    <p style="text-align: center">This is an interactive version of the <a href="https://www.oxfordinsights.com/government-ai-readiness-index-2021">Government AI Readiness report
+        from Oxford Insights</a>.</p>
+    
+    <oi-map
+        style="height:600px"
+        data-src="data/map_2021.json"
+        zoom="2"
+        center-x="0"
+        center-y="25"
+        low-colour="white"
+        mid-colour="#6D88A3"
+        high-colour="#101417"
+        map-background-colour="#E0E0E0"
+        tooltip-background-colour="white"
+        tooltip-colour="black">
+    </oi-map>
+
+<!-- these are all the properties you can set for the map -->
+<!--
+<oi-map
+        style="height:600px"
+        data-src="data/map.json"
+        zoom="2"
+        center-x="0"
+        center-y="25"
+        low-colour="white"
+        mid-colour="#6D88A3"
+        high-colour="#101417"
+        map-background-colour="#E0E0E0"
+        tooltip-background-colour="white"
+        tooltip-colour="black">
+</oi-map>
+-->
+
+<main>
+    <!-- The map needs to have a height somewhere above it in the tag hierarchy -->
+    <!--
+    <section>
+        <h4>Introduction text</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+            deserunt mollit anim id est laborum.</p>
+    </section>
+    -->
+
+    <!-- If you set a height and overflow, to make the list into a scrolling window, you also need
+        to explicitly set the width to 100% -->
+   
+    <section>
+        <div style="height:340px; overflow: scroll; width:100%">
+            <oi-country-list data-src="data/air_2021.json" columns="Rank,Country,Index" sort-by="Rank"
+                             sort="asc"></oi-country-list>
+        </div>
+    </section>
+
+       <!--
+    <section>
+        <h4>Radial chart</h4>
+        <div style="width:80%">
+                    <oi-radial-barchart data-src="data/air.json"></oi-radial-barchart>
+        </div>
+    </section>
+-->
+
+    <!-- The fiche doesn't require any special styling -->
+    <!-- The focus-on-selection property sets whether to 'jump' to the fiche when a new country
+         is selected -->
+
+            <!--
+                The default for the radial is to show the things on the fiche print design.
+                However, it also takes a list of keys and colours.
+                Eg., if you just wanted to show the group totals:
+
+                <oi-radial-barchart
+                    keys="Government,Technology Sector,Data and Infrastructure"
+                    colours="#AF3845,#F9F081,#334064">
+                </oi-radial-barchart>
+            -->
+    
+    <section>
+        <oi-country-fiche data-src="data/air_2021.json" focus-on-selection=true>
+            <div style="display:flex; width:100%; flex-flow: row wrap">
+                <div style="width:100%">
+                    <oi-radial-barchart data-src="data/air_2021.json"></oi-radial-barchart>
+                </div>
+            </div>
+        </oi-country-fiche>
+    </section>
+    
+
+    <!-- A container for dynamic text -->
+    <!--
+    <section>
+        <oi-text></oi-text>
+    </section>
+    -->
+    
+              <!--
+                The default for the radial is to show the things on the fiche print design.
+                However, it also takes a list of keys and colours.
+                Eg., if you just wanted to show the group totals:
+
+                <oi-radial-barchart
+                    keys="Government,Technology Sector,Data and Infrastructure"
+                    colours="#AF3845,#F9F081,#334064">
+                </oi-radial-barchart>
+            -->
+    <!--
+    <p>This is an example of the fiche with some content as well as the data.</p>
+
+    <section>
+        <oi-country-fiche data-src="data/air.json" focus-on-selection=false>
+            <div style="display:flex; width:100%; flex-flow: row wrap">
+                <div style="width:100%">
+                    <h4>Index</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                        aliquip
+                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                        dolore eu
+                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                        deserunt mollit anim id est laborum.</p>
+                    <oi-radial-barchart data-src="data/air.json"></oi-radial-barchart>
+                </div>
+                <br>
+                <div style="width:100%">
+                    <h4>Responsible Use</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                        aliquip
+                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                        dolore eu
+                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                        deserunt mollit anim id est laborum.</p>
+                    <oi-radial-barchart data-src="data/air.json" keys="Inclusivity,Accountability,Transparency,Privacy"
+                                        colours="#E94A5A,#F7E82D,#4D6095,green"></oi-radial-barchart>
+                </div>
+            </div>
+        </oi-country-fiche>
+    </section>
+    -->
+
+    <!-- the table view for the country list can show any of the columns if you want.-->
+    <section>
+        <h4>How do countries compare on key measures?</h4>
+        <div style="height:240px; overflow:scroll; width:100%">
+            <oi-country-list data-src="data/air_2021.json" sort-by="Rank" sort="asc"
+                             columns="Rank,Country,Government,Technology Sector,Data and Infrastructure"></oi-country-list>
+        </div>
+    </section>
+
+    <!--
+        You need to include the text content somewhere in the page, wrapped in a tag with display:none
+         Include the country name as the ID of the top of the article; you can include any content inside
+         it, and it will be displayed in the "oi-text" tag when that country is selected.
+    -->
+    <!--
+    <section style="display:none">
+        <article id="United States of America">
+            <H1 class="headline">United States of America</H1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.</p>
+        </article>
+        <article id="Denmark">
+            <H1 class="headline">Denmark</H1>
+            <p>
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+                rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+                explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
+                dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora
+                incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
+                exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
+                vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum
+                qui dolorem eum fugiat quo voluptas nulla pariatur?
+            </p>
+        </article>
+    </section>
+    -->
+</main>
+
+
+<p class="attribution">JavaScript web components developed by <a href="https://twitter.com/scottbw">Scott Wilson/Cetis LLP</a>
+    using <a href="https://stenciljs.com/">Stenciljs</a>, <a href="https://d3js.org/">D3js</a> and <a href="https://leafletjs.com/">Leafletjs</a>. Flags from <a
+            href="https://flagpedia.net">Flagpedia</a>. Map shape data from <a href="https://geojson-maps.ash.ms/">GeoJSON
+        Maps</a>.</p>
+
+</body>
+</html>
